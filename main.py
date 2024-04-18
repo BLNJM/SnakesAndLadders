@@ -2,14 +2,17 @@ import tkinter as tk
 
 
 class GUI:
-    def __init__(self, root):
+    def __init__(self, root, num_players):
         self.root = root
+        self.num_players = num_players
         self.root.title("Snakes and Ladders")
         self.canvas = tk.Canvas(self.root, width=500, height=500)
         self.canvas.pack()
         
 
 if __name__ == "__main__":
+
+    num_players = 0
 
     # ask the user for the player count
     while True:
@@ -26,5 +29,5 @@ if __name__ == "__main__":
             print("Invalid response, please enter the number of players")
 
     root = tk.Tk()
-    game = GUI(root)
+    game = GUI(root, num_players)
     root.mainloop()
