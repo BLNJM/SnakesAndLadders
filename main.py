@@ -25,6 +25,9 @@ class GUI:
             83: 73,
             91: 75,
         }
+
+    def draw_board(self):
+        print("WIP")
         
 
 if __name__ == "__main__":
