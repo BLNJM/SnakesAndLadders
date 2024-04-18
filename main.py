@@ -8,6 +8,23 @@ class GUI:
         self.root.title("Snakes and Ladders")
         self.canvas = tk.Canvas(self.root, width=500, height=500)
         self.canvas.pack()
+        # assign the snakes and the ladders; left is starting position and right is ending position
+        self.board = {
+            9: 4,
+            13: 25,
+            16: 5,
+            19: 29,
+            27: 20,
+            39: 11,
+            42: 59,
+            46: 33,
+            52: 29,
+            57: 66,
+            64: 50,
+            77: 44,
+            83: 73,
+            91: 75,
+        }
         
 
 if __name__ == "__main__":
