@@ -8,6 +8,7 @@ class GUI:
         self.root.title("Snakes and Ladders")
         self.canvas = tk.Canvas(self.root, width=500, height=500)
         self.canvas.pack()
+        self.players = [{'name': f'Player {i + 1}', 'position': 1} for i in range(num_players)]
         # assign the snakes and the ladders; left is starting position and right is ending position
         self.board = {
             9: 4,
@@ -25,10 +26,27 @@ class GUI:
             83: 73,
             91: 75,
         }
+        self.draw_board()
 
     def draw_board(self):
-        print("WIP")
-        
+        self.canvas.delete("all")
+        # draw all the numbers on the board, including the snakes and ladders
+        for i in range(10):
+            for j in range(10):
+                x = j * 50
+                y = (9 - i) * 50
+                pos = i * 10 + j + 1
+                if pos in self.board:
+                    target = self.board[pos]
+                    self.canvas.create_text(x + 30, y + 20, text=f"{pos}->{target}")
+                else:
+                    self.canvas.create_text(x + 30, y + 20, text=pos)
+        # draw circles around the current positions of each player
+        for player in self.players:
+            x = ((player['position'] - 1) % 10) * 50
+            y = (9 - (player['position'] - 1) // 10) * 50
+            self.canvas.create_oval(x + 15, y + 5, x + 45, y + 35, outline="red")
+
 
 if __name__ == "__main__":
 
