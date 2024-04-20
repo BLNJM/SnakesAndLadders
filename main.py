@@ -9,6 +9,7 @@ class GUI:
         self.canvas = tk.Canvas(self.root, width=500, height=500)
         self.canvas.pack()
         self.players = [{'name': f'Player {i + 1}', 'position': 1} for i in range(num_players)]
+
         # assign the snakes and the ladders; left is starting position and right is ending position
         self.board = {
             9: 4,
@@ -26,6 +27,11 @@ class GUI:
             83: 73,
             91: 75,
         }
+
+        # dice roll button
+        self.roll_button = tk.Button(root, text="Roll Dice", command=self.roll_dice)
+        self.roll_button.pack()
+
         self.draw_board()
 
     def draw_board(self):
@@ -46,6 +52,9 @@ class GUI:
             x = ((player['position'] - 1) % 10) * 50
             y = (9 - (player['position'] - 1) // 10) * 50
             self.canvas.create_oval(x + 15, y + 5, x + 45, y + 35, outline="red")
+
+    def roll_dice(self):
+        print("WIP")
 
 
 if __name__ == "__main__":
