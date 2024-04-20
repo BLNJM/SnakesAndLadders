@@ -32,6 +32,9 @@ class GUI:
         self.roll_button = tk.Button(root, text="Roll Dice", command=self.roll_dice)
         self.roll_button.pack()
 
+        self.label = tk.Label(root, text="test")
+        self.label.pack()
+
         self.draw_board()
 
     def draw_board(self):
