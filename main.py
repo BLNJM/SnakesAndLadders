@@ -10,6 +10,7 @@ class GUI:
         self.canvas = tk.Canvas(self.root, width=500, height=500)
         self.canvas.pack()
         self.players = [{'name': f'Player {i + 1}', 'position': 1} for i in range(num_players)]
+        self.current_player = 0
 
         # assign the snakes and the ladders; left is starting position and right is ending position
         self.board = {
@@ -61,7 +62,11 @@ class GUI:
         self.move_player(random.randint(1,6))
 
     def move_player(self, distance):
-        print("WIP")
+        player = self.players[self.current_player]
+        player['position'] += distance
+        self.current_player += 1
+        if self.current_player is num_players:
+            self.current_player = 0
 
 
 if __name__ == "__main__":
