@@ -1,3 +1,4 @@
+import random
 import tkinter as tk
 
 
@@ -57,7 +58,7 @@ class GUI:
             self.canvas.create_oval(x + 15, y + 5, x + 45, y + 35, outline="red")
 
     def roll_dice(self):
-        print("WIP")
+        self.move_player(random.randint(1,6))
 
     def move_player(self, distance):
         print("WIP")
