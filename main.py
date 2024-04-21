@@ -59,6 +59,9 @@ class GUI:
     def roll_dice(self):
         print("WIP")
 
+    def move_player(self, distance):
+        print("WIP")
+
 
 if __name__ == "__main__":
 
