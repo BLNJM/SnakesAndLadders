@@ -60,6 +60,7 @@ class GUI:
 
     def roll_dice(self):
         self.move_player(random.randint(1,6))
+        self.draw_board()
 
     def move_player(self, distance):
         player = self.players[self.current_player]
