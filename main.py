@@ -34,6 +34,7 @@ class GUI:
         self.roll_button = tk.Button(root, text="Roll Dice", command=self.roll_dice)
         self.roll_button.pack()
 
+        # current player status label
         self.label = tk.Label(root, text="Welcome to Snakes and Ladders. Player 1's turn")
         self.label.pack()
 
@@ -69,6 +70,7 @@ class GUI:
         if self.current_player is num_players:
             self.current_player = 0
 
+    # updates the status label and redraws the board
     def update(self):
         player = self.players[self.current_player]
         self.label.config(text=f"{player['name']}'s turn")
