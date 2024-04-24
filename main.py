@@ -69,6 +69,11 @@ class GUI:
         if self.current_player is num_players:
             self.current_player = 0
 
+    def update(self):
+        player = self.players[self.current_player]
+        self.label.config(text=f"{player['name']}'s turn")
+        self.draw_board()
+
 
 if __name__ == "__main__":
 
