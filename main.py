@@ -71,6 +71,7 @@ class GUI:
         # declare a winning player and end the game
         if player['position'] >= 100:
             self.label.config(text=f"{player['name']} wins!")
+            self.roll_button.config(state="disabled")
 
         self.current_player += 1
         if self.current_player is num_players:
