@@ -64,8 +64,14 @@ class GUI:
         self.update()
 
     def move_player(self, distance):
+        # move the player
         player = self.players[self.current_player]
         player['position'] += distance
+
+        # declare a winning player and end the game
+        if player['position'] >= 100:
+            self.label.config(text=f"{player['name']} wins!")
+
         self.current_player += 1
         if self.current_player is num_players:
             self.current_player = 0
