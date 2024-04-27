@@ -35,8 +35,12 @@ class GUI:
         self.roll_button.pack()
 
         # current player status label
-        self.label = tk.Label(root, text="Welcome to Snakes and Ladders. Player 1's turn")
-        self.label.pack()
+        self.turn_label = tk.Label(root, text="Welcome to Snakes and Ladders. Player 1's turn")
+        self.turn_label.pack()
+
+        # current dice roll label
+        self.roll_label = tk.Label(root, text="")
+        self.roll_label.pack()
 
         self.draw_board()
 
@@ -60,7 +64,10 @@ class GUI:
             self.canvas.create_oval(x + 15, y + 5, x + 45, y + 35, outline="red")
 
     def roll_dice(self):
-        self.move_player(random.randint(1,6))
+        player = self.players[self.current_player]
+        distance = random.randint(1,6)
+        self.roll_label.config(text=f"{player['name']} rolled a {distance}!")
+        self.move_player(distance)
         self.update()
 
     def move_player(self, distance):
@@ -74,7 +81,7 @@ class GUI:
 
         # declare a winning player and end the game
         if player['position'] >= 100:
-            self.label.config(text=f"{player['name']} wins!")
+            self.turn_label.config(text=f"{player['name']} wins!")
             self.roll_button.config(state="disabled")
 
         self.current_player += 1
@@ -84,7 +91,7 @@ class GUI:
     # updates the status label and redraws the board
     def update(self):
         player = self.players[self.current_player]
-        self.label.config(text=f"{player['name']}'s turn")
+        self.turn_label.config(text=f"{player['name']}'s turn")
         self.draw_board()
 
 
