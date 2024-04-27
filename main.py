@@ -68,6 +68,10 @@ class GUI:
         player = self.players[self.current_player]
         player['position'] += distance
 
+        # the player has landed on a snake/ladder; move them accordingly
+        if player['position'] in self.board:
+            player['position'] = self.board[player['position']]
+
         # declare a winning player and end the game
         if player['position'] >= 100:
             self.label.config(text=f"{player['name']} wins!")
