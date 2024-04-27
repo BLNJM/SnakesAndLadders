@@ -34,13 +34,13 @@ class GUI:
         self.roll_button = tk.Button(root, text="Roll Dice", command=self.roll_dice)
         self.roll_button.pack()
 
-        # current player status label
-        self.turn_label = tk.Label(root, text="Welcome to Snakes and Ladders. Player 1's turn")
-        self.turn_label.pack()
-
         # current dice roll label
         self.roll_label = tk.Label(root, text="")
         self.roll_label.pack()
+
+        # current player status label
+        self.turn_label = tk.Label(root, text="Welcome to Snakes and Ladders. Player 1's turn")
+        self.turn_label.pack()
 
         self.draw_board()
 
@@ -65,7 +65,7 @@ class GUI:
 
     def roll_dice(self):
         player = self.players[self.current_player]
-        distance = random.randint(1,6)
+        distance = random.randint(1, 6)
         self.roll_label.config(text=f"{player['name']} rolled a {distance}!")
         self.move_player(distance)
         self.update()
