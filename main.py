@@ -64,10 +64,7 @@ class GUI:
             self.canvas.create_oval(x + 15, y + 5, x + 45, y + 35, outline="red")
 
     def roll_dice(self):
-        player = self.players[self.current_player]
-        distance = random.randint(1, 6)
-        self.roll_label.config(text=f"{player['name']} rolled a {distance}!")
-        self.move_player(distance)
+        self.move_player(random.randint(1, 6))
         self.update()
 
     def move_player(self, distance):
@@ -78,6 +75,8 @@ class GUI:
         # the player has landed on a snake/ladder; move them accordingly
         if player['position'] in self.board:
             player['position'] = self.board[player['position']]
+
+        self.roll_label.config(text=f"{player['name']} rolled a {distance} and is now at tile {player['position']}!")
 
         # declare a winning player and end the game
         if player['position'] >= 100:
