@@ -71,6 +71,8 @@ class GUI:
         # move the player
         player = self.players[self.current_player]
         player['position'] += distance
+        if player['position'] > 100:
+            player['position'] = 100
 
         # the player has landed on a snake/ladder; move them accordingly
         if player['position'] in self.board:
@@ -79,7 +81,7 @@ class GUI:
         self.roll_label.config(text=f"{player['name']} rolled a {distance} and is now at tile {player['position']}!")
 
         # declare a winning player and end the game
-        if player['position'] >= 100:
+        if player['position'] == 100:
             self.turn_label.config(text=f"{player['name']} wins!")
             self.roll_button.config(state="disabled")
 
