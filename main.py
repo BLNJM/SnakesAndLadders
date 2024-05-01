@@ -80,11 +80,6 @@ class GUI:
 
         self.roll_label.config(text=f"{player['name']} rolled a {distance} and is now at tile {player['position']}!")
 
-        # declare a winning player and end the game
-        if player['position'] == 100:
-            self.turn_label.config(text=f"{player['name']} wins!")
-            self.roll_button.config(state="disabled")
-
         self.current_player += 1
         if self.current_player is num_players:
             self.current_player = 0
@@ -93,6 +88,12 @@ class GUI:
     def update(self):
         player = self.players[self.current_player]
         self.turn_label.config(text=f"{player['name']}'s turn")
+
+        # declare a winning player and end the game
+        if player['position'] == 100:
+            self.turn_label.config(text=f"{player['name']} wins!")
+            self.roll_button.config(state="disabled")
+
         self.draw_board()
 
 
