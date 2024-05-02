@@ -80,6 +80,10 @@ class GUI:
 
         self.roll_label.config(text=f"{player['name']} rolled a {distance} and is now at tile {player['position']}!")
 
+        if player['position'] == 100:
+            self.update()
+            return
+
         self.current_player += 1
         if self.current_player is num_players:
             self.current_player = 0
